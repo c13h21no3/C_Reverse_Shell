@@ -140,7 +140,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrev, LPSTR lpCmdLine, int 
 	char *ServIP;
 	WSADATA wsaData;
 
-	ServIP = "172.30.1.47"; //switch it to router public ip after port forwarding to rpi
+	ServIP = "172.30.1.69"; //switch it to router public ip after port forwarding to rpi
 	ServPort = 50005;
 
 	if (WSAStartup(MAKEWORD(2,0), &wsaData) != 0) {
